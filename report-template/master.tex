@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for FYP/ISP Report of NED University of Engg. & Tech., Karachi
+% 2018 v1.0
+% Created by Arsalan Khairani & Dr. Muhammad Ali Ismail
+% https://github.com/ArsalanKhairani/report_latex_template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This template can be used as a to draft Final Year Project reports using LaTex.
+% Created under the supervision of Dr. Muhammad Ali Ismail, Co-Chair CISD, NED, this
+% provides a framework with all the necessary packages and formatting needed to provide a 
+% quick start. That being said, it's also true that depending upon your needs, you
+% might need to modify the template. Improvements to the templates are always welcomed,
+% you can create a pull request to the Git repository mentioned above. I'll try to 
+% comment the template as much as I can to explain the purpose of statements used and 
+% how and what needs to be modified.
+
+% Sidebar - Similar to programming, you can either create a very long single latex file with 
+% all the imports and logic OR you can create multiple smaller modules. This template
+% is constructed in modular format and thus this (the main file of the project) is very short.
+% So let's get started!
+
+% First step is to include all the packages (similar to programming). Like being said
+% you could've done it in this file OR in some other file (like we did) and import it
+% here. Check setup/preamble.tex for detailed description.
+\input{preamble.tex}
+
+% The latex document always starts with a begin{document} command and ends with end{document} command.
+\begin{document}
+
+  % front_page.tex is the cover page of hard binded book. It's according to the format
+  % specified by NEDUET. However, to get it printed on a hard cover consult the binder.
+  \input{sections/front_page.tex}
+  
+  % first_page.tex is the internal cover page.
+  \input{sections/first_page.tex}
+  
+  % The next section contains things like abstract, acknowledgements, table of contents
+  % etc. Note the use of pagestyle command, this command resets the header and footer
+  % style so that the following pages doesn't get the header & footer like the main
+  % content. In other words, we don't want page numbers on the following pages.
+  % However, following the pagestyle statement, you'd see that we've used pagenumbering
+  % command, this commands sets the format of page numbers. We need it here otherwise,
+  % the following pages would get page numbers as well and though pagestyle can
+  % make them disappear, we'd see those page numbers in table of contents.
+  % Finally, the cleardoublepage command is to end the current page. Removing this
+  % command could result in improper page numbering.
+  \doublespacing
+  \pagestyle{empty}
+  \pagenumbering{roman}
+  \input{sections/abstract.tex}
+  \input{sections/acknowledgments.tex}
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \cleardoublepage
+  
+  % Here is the main content of the report. Note that we're now using fancy pagestyle
+  % and also using the arabic numerals for page numbers.
+  \pagestyle{fancy}
+  \pagenumbering{arabic}
+  \input{sections/introduction.tex}
+  \input{sections/chapter_2.tex}
+  
+  % The final section of our report is bibliography. You can add you references in
+  % bib/mybib.bib and they would automatically appear here, if cited.
+  % The linespread{1} command is changing the linespacing to single space unlike the
+  % rest of the document which is double spaced.
+  \linespread{1}
+  \printbibliography[heading=bibintoc,title={References}]
+  \label{bib:mybiblio}
+  
+% And that's al1.
+\end{document}
